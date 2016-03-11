@@ -2,10 +2,12 @@ package rmutr.narubeth.saowarak.norapol.broadcastertest;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.PowerManager;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,7 +17,7 @@ public class TestActivity extends Activity  {
 
     private TextView showDetailTextView;
     private String detailString;
-    private int timeAnInt = 0;
+    private int timeAnInt = 1, scoreAnInt = 0;
 
     /* constants */
     private static final int POLL_INTERVAL = 300;
@@ -55,14 +57,18 @@ public class TestActivity extends Activity  {
             //Log.i("Noise", "runnable mPollTask");
             updateDisplay(getResources().getString(R.string.start_test), amp);
 
-            if ((amp > mThreshold)) {
-                callForHelp();
-                //Log.i("Noise", "==== onCreate ===");
+            if (amp > 6) {
+                if (amp > 8) {
+                    scoreAnInt += 1;
+                    timeAnInt += 1;
+                    callForHelp();
+                } else {
+                    timeAnInt += 1;
+                } //if2
+            } //if1
 
-            } else if ( amp > (mThreshold - 1)) {
-                timeAnInt += 1;
-                Log.d("11March", "Time Pass = " + timeAnInt);
-            }
+            Log.d("11March", "Score = " + scoreAnInt);
+            Log.d("11March", "Times = " + timeAnInt);
 
             // Runnable(mPollTask) will again execute after POLL_INTERVAL
             mHandler.postDelayed(mPollTask, POLL_INTERVAL);
@@ -91,6 +97,20 @@ public class TestActivity extends Activity  {
 
         PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
         mWakeLock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "NoiseAlert");
+    } //Main Method
+
+    public void clickShowScore(View view) {
+        Intent intent = new Intent(TestActivity.this, ShowScoreActivity.class);
+
+        intent.putExtra("Score", scoreAnInt);
+        intent.putExtra("Times", timeAnInt);
+
+        startActivity(intent);
+        finish();
+    }
+
+    public void clickBackTest(View view) {
+        finish();
     }
 
     private void showDetailView() {
@@ -166,11 +186,11 @@ public class TestActivity extends Activity  {
 
     private void callForHelp() {
 
-        //stop();
+        scoreAnInt += 1;
 
-        // Show alert when noise thersold crossed
-        Toast.makeText(getApplicationContext(), "Noise Thersold Crossed, do here your stuff.",
+        Toast.makeText(getApplicationContext(), getResources().getString(R.string.bingo),
                 Toast.LENGTH_LONG).show();
+
     }
 
 };

@@ -7,5 +7,7 @@
 
     <string name="title_test">โปรดอ่านข้อความต่อไปนี้</string>
     <string name="start_test">เริ่มอ่านข้อความได้...</string>
+    <string name="bingo">คะแนนของคุณ</string>
+    <string name="read_score">ประวัติการทดสอบ</string>
 
 </resources>
