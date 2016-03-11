@@ -5,11 +5,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class ShowScoreActivity extends AppCompatActivity {
 
     //Explicit
-    private TextView showScoreTextView;
+    private TextView showScoreTextView, showDateTextView;
     private int scoreAnInt, timesAnInt;
+    private String currentDateString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +24,20 @@ public class ShowScoreActivity extends AppCompatActivity {
         //Show Score
         showScore();
 
+        //Show Date
+        showDate();
+
     } // Main Method
+
+    private void showDate() {
+
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+        currentDateString = dateFormat.format(date);
+        showDateTextView = (TextView) findViewById(R.id.textView7);
+        showDateTextView.setText(currentDateString);
+
+    } //showDate
 
     private void showScore() {
 
