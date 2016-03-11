@@ -12,11 +12,10 @@ import android.widget.Toast;
 public class TestActivity extends Activity  {
 
     //Explicit
+
     private TextView showDetailTextView;
     private String detailString;
-
-
-
+    private int timeAnInt = 0;
 
     /* constants */
     private static final int POLL_INTERVAL = 300;
@@ -54,12 +53,15 @@ public class TestActivity extends Activity  {
 
             double amp = mSensor.getAmplitude();
             //Log.i("Noise", "runnable mPollTask");
-            updateDisplay("Monitoring Voice...", amp);
+            updateDisplay(getResources().getString(R.string.start_test), amp);
 
             if ((amp > mThreshold)) {
                 callForHelp();
                 //Log.i("Noise", "==== onCreate ===");
 
+            } else if ( amp > (mThreshold - 1)) {
+                timeAnInt += 1;
+                Log.d("11March", "Time Pass = " + timeAnInt);
             }
 
             // Runnable(mPollTask) will again execute after POLL_INTERVAL
