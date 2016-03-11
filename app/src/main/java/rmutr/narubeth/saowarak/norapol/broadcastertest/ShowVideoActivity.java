@@ -14,7 +14,7 @@ public class ShowVideoActivity extends AppCompatActivity {
     //Explicit ประกาศตัวแปล
     private TextView titleTextView;
     private VideoView showVideoView;
-    private String strTitle;
+    private String strTitle, detailString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +58,12 @@ public class ShowVideoActivity extends AppCompatActivity {
     }
 
     public void clickTest(View view) {
+
+        detailString = getIntent().getStringExtra("Detail");
+
         Intent intent = new Intent(ShowVideoActivity.this, TestActivity.class);
         intent.putExtra("Title", strTitle);
+        intent.putExtra("Detail", detailString);
         startActivity(intent);
     }
 

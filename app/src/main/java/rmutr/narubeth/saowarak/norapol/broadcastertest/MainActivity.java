@@ -11,6 +11,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //Explicit
     private ImageView talkNameImageView, newTestMaleImageView, newTestFemaleImageView;
 
+    private String[] detailStrings;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,14 +49,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()) {
             case R.id.imageView2:
                 resultStrings = getResources().getStringArray(R.array.talkname);
+                detailStrings = getResources().getStringArray(R.array.talkname_detail);
                 intIcon = R.drawable.nameread;
                 break;
             case R.id.imageView3:
                 resultStrings = getResources().getStringArray(R.array.testmale);
+                detailStrings = getResources().getStringArray(R.array.testmale_detail);
                 intIcon = R.drawable.testboy;
                 break;
             case R.id.imageView4:
                 resultStrings = getResources().getStringArray(R.array.testfemale);
+                detailStrings = getResources().getStringArray(R.array.testfemale_detail);
                 intIcon = R.drawable.gtest;
                 break;
             default:
@@ -65,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Intent to Detail ListView
         Intent objIntent = new Intent(MainActivity.this, DetailListView.class);
         objIntent.putExtra("Title", resultStrings);
+        objIntent.putExtra("Detail", detailStrings);
         objIntent.putExtra("Icon", intIcon);
         startActivity(objIntent);
 
