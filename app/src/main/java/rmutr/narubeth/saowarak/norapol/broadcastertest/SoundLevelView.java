@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
 
+
 class SoundLevelView extends View {
     private Drawable mGreen;
     private Drawable mRed;
@@ -18,7 +19,6 @@ class SoundLevelView extends View {
 
     private int mThreshold = 0;
     private int mVol = 0;
-
 
     public SoundLevelView(Context context, AttributeSet attrs) {
         super(context, attrs);

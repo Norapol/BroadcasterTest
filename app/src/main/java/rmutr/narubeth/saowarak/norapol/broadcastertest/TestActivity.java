@@ -7,7 +7,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.PowerManager;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -88,8 +91,8 @@ public class TestActivity extends Activity  {
         mStatusView = (TextView) findViewById(R.id.status);
         showDetailTextView = (TextView) findViewById(R.id.textView5);
 
-        //Show Detail View
-        showDetailView();
+                //Show Detail View
+                showDetailView();
 
         // Used to record voice
         mSensor = new SoundMeter();
