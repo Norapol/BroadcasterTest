@@ -79,15 +79,34 @@ public class TestActivity extends Activity  {
         }
     };
 
-
-
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_test);
+
+        final ImageButton imageButton = (ImageButton) findViewById(R.id.imageButton);
+        imageButton.setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                Log.wtf("button touch up", "0");
+                if (event.getAction() == MotionEvent.ACTION_UP)
+                {
+                    imageButton.setBackgroundResource(R.drawable.red1);
+                    Log.wtf("button touch up", "1");
+                    stop();
+                } else if (event.getAction() == MotionEvent.ACTION_DOWN)
+                {
+                    imageButton.setBackgroundResource(R.drawable.red2);
+                    Log.wtf("button touch up", "2");
+                    getSound();
+
+                }
+                return false;
+            }
+        });
 
         // Defined SoundLevelView in main.xml file
-        setContentView(R.layout.activity_test);
         mStatusView = (TextView) findViewById(R.id.status);
         showDetailTextView = (TextView) findViewById(R.id.textView5);
 
@@ -121,11 +140,11 @@ public class TestActivity extends Activity  {
         showDetailTextView.setText(detailString);
     }
 
-
+/*
     @Override
     public void onResume() {
         super.onResume();
-        //Log.i("Noise", "==== onResume ===");
+        Log.i("Noise", "==== onResume ===");
 
         initializeApplicationConstants();
         mDisplay.setLevel(0, mThreshold);
@@ -135,7 +154,19 @@ public class TestActivity extends Activity  {
             start();
         }
     }
+*/
 
+    private void getSound() {
+        Log.i("Noise", "==== onResume ===");
+
+        initializeApplicationConstants();
+        mDisplay.setLevel(0, mThreshold);
+
+        if (!mRunning) {
+            mRunning = true;
+            start();
+        }
+    }
     @Override
     public void onStop() {
         super.onStop();
