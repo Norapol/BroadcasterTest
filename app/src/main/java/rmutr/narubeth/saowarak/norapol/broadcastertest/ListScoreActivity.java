@@ -25,7 +25,7 @@ public class ListScoreActivity extends AppCompatActivity {
 
         SQLiteDatabase sqLiteDatabase = openOrCreateDatabase(MyOpenHelper.database_name,
                 MODE_PRIVATE, null);
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM " + MyManage.test_table , null);
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM " + MyManage.test_table+ " ORDER BY _id DESC" , null);
         cursor.moveToFirst();
         String[] dateStrings = new String[cursor.getCount()];
         String[] scoreStrings = new String[cursor.getCount()];
