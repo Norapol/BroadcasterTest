@@ -6,15 +6,6 @@
     tools:context="rmutr.narubeth.saowarak.norapol.broadcastertest.DetailListView"
     android:background="@drawable/bg">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/txtTitle"
-        android:textSize="@dimen/h1"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true" />
-
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,7 +18,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/listView"
-        android:layout_below="@+id/txtTitle"
         android:layout_above="@+id/button"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp" />
