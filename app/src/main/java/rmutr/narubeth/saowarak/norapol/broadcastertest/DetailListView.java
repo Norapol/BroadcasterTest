@@ -1,8 +1,8 @@
 package rmutr.narubeth.saowarak.norapol.broadcastertest;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,6 +13,7 @@ public class DetailListView extends AppCompatActivity {
     //Explicit
     private String[] titleStrings, detailStrings;
     private int iconAnInt;
+    private int[] videoInts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,16 +40,17 @@ public class DetailListView extends AppCompatActivity {
 
         myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 //Intent to ShowVideoActivity
                 Intent objIntent = new Intent(DetailListView.this, ShowVideoActivity.class);
                 objIntent.putExtra("Title", titleStrings[i]);
                 objIntent.putExtra("Detail", detailStrings[i]);
-                objIntent.putExtra("Viedo", R.raw.talkname1);
+                objIntent.putExtra("Video", videoInts[i]);
                 startActivity(objIntent);
 
-            } //event
+
+            }   // event
         });
 
     }   // createListView
@@ -58,8 +60,9 @@ public class DetailListView extends AppCompatActivity {
         titleStrings = getIntent().getStringArrayExtra("Title");
         detailStrings = getIntent().getStringArrayExtra("Detail");
         iconAnInt = getIntent().getIntExtra("Icon", R.drawable.nameread);
+        videoInts = getIntent().getIntArrayExtra("Video");
 
-        for (int i=0;i<titleStrings.length;i++) {
+        for (int i = 0; i < titleStrings.length; i++) {
             Log.d("Test", "titleString[" + Integer.toString(i) + "] = " + titleStrings[i]);
         }   // for
 

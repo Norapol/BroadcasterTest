@@ -2,8 +2,8 @@ package rmutr.narubeth.saowarak.norapol.broadcastertest;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.MediaController;
 import android.widget.TextView;
@@ -11,7 +11,7 @@ import android.widget.VideoView;
 
 public class ShowVideoActivity extends AppCompatActivity {
 
-    //Explicit ประกาศตัวแปล
+    //Explicit ประกาศตัวแปร
     private TextView titleTextView;
     private VideoView showVideoView;
     private String strTitle, detailString;
@@ -27,13 +27,19 @@ public class ShowVideoActivity extends AppCompatActivity {
         //Show Video
         showVideo();
 
+    }   // Main Method
 
-    } //Main Method
+
 
     private void showVideo() {
 
         showVideoView = (VideoView) findViewById(R.id.videoView);
-        String strSourceVideo = "android.resource://" + getPackageName() + "/" + R.raw.talkname1;
+        //String strSourceVideo = "android.resource://" + getPackageName() + "/" + R.raw.talkname1;
+
+        int intSource = getIntent().getIntExtra("Video", 0);
+
+        String strSourceVideo = "android.resource://" + getPackageName() + "/" + intSource;
+
 
         MediaController objMediaController = new MediaController(this);
         objMediaController.setAnchorView(showVideoView);
@@ -42,14 +48,13 @@ public class ShowVideoActivity extends AppCompatActivity {
         showVideoView.setVideoURI(videoUri);
         showVideoView.start();
 
-    } //showVideo
+    }   // showVideo
 
     private void showTitle() {
 
         strTitle = getIntent().getStringExtra("Title");
-        TextView titleTextView = (TextView) findViewById(R.id.txtShowTitleVideo);
+        titleTextView = (TextView) findViewById(R.id.txtShowTitleVideo);
         titleTextView.setText(strTitle);
-
 
     }
 
@@ -67,4 +72,4 @@ public class ShowVideoActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-} //Main Class
+}   // Main Class
