@@ -15,8 +15,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             R.raw.talkname4, R.raw.talkname5, R.raw.talkname6, R.raw.talkname7,
             R.raw.talkname8, R.raw.talkname9, R.raw.talkname10, R.raw.talkname11,
             R.raw.talkname12, R.raw.talkname13, R.raw.talkname14, R.raw.talkname15,};
-            //R.raw.testfemale1,R.raw.testfemale2,R.raw.testfemale3,R.raw.testfemale4,R.raw.testfemale5,
-            //R.raw.testmale1,R.raw.testmale2,R.raw.testmale3,R.raw.testmale4,R.raw.testmale5};
 
     private int[] myVideo1 = {R.raw.testfemale1,R.raw.testfemale2,R.raw.testfemale3,R.raw.testfemale4,R.raw.testfemale5};
 
