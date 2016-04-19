@@ -29,8 +29,6 @@ public class ShowVideoActivity extends AppCompatActivity {
 
     }   // Main Method
 
-
-
     private void showVideo() {
 
         showVideoView = (VideoView) findViewById(R.id.videoView);
@@ -70,6 +68,7 @@ public class ShowVideoActivity extends AppCompatActivity {
         intent.putExtra("Title", strTitle);
         intent.putExtra("Detail", detailString);
         startActivity(intent);
+
     }
 
 }   // Main Class
