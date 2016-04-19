@@ -80,7 +80,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }   // switch
 
-
         //Intent to Detail ListView
         Intent objIntent = new Intent(MainActivity.this, DetailListView.class);
         objIntent.putExtra("Title", resultStrings);
