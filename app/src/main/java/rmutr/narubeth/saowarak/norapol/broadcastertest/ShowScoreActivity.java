@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.lang.ref.SoftReference;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -35,10 +36,12 @@ public class ShowScoreActivity extends AppCompatActivity {
 
     private void updateDataToSQLite() {
 
+        String strName = getIntent().getStringExtra("Name");
+
         MyManage myManage = new MyManage(this);
         myManage.addTest(currentDateString,
                 Integer.toString(scoreAnInt),
-                Integer.toString(timesAnInt));
+                Integer.toString(timesAnInt),strName);
 
 
     } // updateDataToSQLite
